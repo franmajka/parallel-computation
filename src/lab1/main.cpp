@@ -57,7 +57,7 @@ size_t getMaxElementInColumnRowIdx(const Matrix<T>& matrix, size_t colIdx) {
 }
 
 template<typename T = int>
-void swapMatrixMaxElementsWidthDiagonal(Matrix<T>& matrix, size_t colBeginIdx, size_t colEndIdx) {
+void swapMatrixMaxElementsWithDiagonal(Matrix<T>& matrix, size_t colBeginIdx, size_t colEndIdx) {
   for (size_t colIdx = colBeginIdx; colIdx < colEndIdx; colIdx++) {
     size_t maxElementRowIdx = getMaxElementInColumnRowIdx(matrix, colIdx);
 
@@ -68,12 +68,12 @@ void swapMatrixMaxElementsWidthDiagonal(Matrix<T>& matrix, size_t colBeginIdx, s
 }
 
 template<typename T = int>
-void swapMatrixMaxElementsWidthDiagonal(Matrix<T>& matrix) {
-  return swapMatrixMaxElementsWidthDiagonal(matrix, 0, matrix.size());
+void swapMatrixMaxElementsWithDiagonal(Matrix<T>& matrix) {
+  return swapMatrixMaxElementsWithDiagonal(matrix, 0, matrix.size());
 }
 
 template<typename T = int>
-void parallelSwapMatrixMaxElementsWidthDiagonal(Matrix<T>& matrix, size_t nThreads) {
+void parallelSwapMatrixMaxElementsWithDiagonal(Matrix<T>& matrix, size_t nThreads) {
   std::vector<std::thread> threads;
 
   size_t nColsPerThread = matrix.size() / nThreads;
@@ -94,7 +94,7 @@ void parallelSwapMatrixMaxElementsWidthDiagonal(Matrix<T>& matrix, size_t nThrea
 
     threads.push_back(std::thread(
       [&matrix, colBeginIdx, colEndIdx]() {
-        swapMatrixMaxElementsWidthDiagonal(matrix, colBeginIdx, colEndIdx);
+        swapMatrixMaxElementsWithDiagonal(matrix, colBeginIdx, colEndIdx);
       }
     ));
   }
@@ -133,14 +133,14 @@ int main() {
     auto matrixCopy = matrix;
 
     Timer t;
-    swapMatrixMaxElementsWidthDiagonal(matrixCopy);
+    swapMatrixMaxElementsWithDiagonal(matrixCopy);
     file << matrixSize << ',' << 1 << ',' << t.elapsed<Timer::millisecond_t>() << '\n';
 
     for (const auto& nThreads : threadNumbers) {
       matrixCopy = matrix;
 
       t.reset();
-      parallelSwapMatrixMaxElementsWidthDiagonal(matrixCopy, nThreads);
+      parallelSwapMatrixMaxElementsWithDiagonal(matrixCopy, nThreads);
       file << matrixSize << ',' << nThreads << ',' << t.elapsed<Timer::millisecond_t>() << '\n';
     }
   }
