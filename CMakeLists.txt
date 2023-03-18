@@ -10,4 +10,4 @@ add_subdirectory(lib)
 include_directories(src/utils)
 
 add_subdirectory(src/lab1)
-
+add_subdirectory(src/lab2)
