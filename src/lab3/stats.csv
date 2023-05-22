@@ -1,0 +1,37 @@
+name,arraySize,duration
+Single thread,100,0.006593
+Multithread non blocking,100,0.667961
+Multithread blocking,100,0.305115
+Multithread atomic,100,0.296088
+Single thread,1000,0.029162
+Multithread non blocking,1000,0.389766
+Multithread blocking,1000,0.308522
+Multithread atomic,1000,0.299839
+Single thread,5000,0.107035
+Multithread non blocking,5000,0.365746
+Multithread blocking,5000,0.551512
+Multithread atomic,5000,0.361499
+Single thread,10000,0.21016
+Multithread non blocking,10000,0.465383
+Multithread blocking,10000,1.03449
+Multithread atomic,10000,0.519599
+Single thread,100000,2.00669
+Multithread non blocking,100000,1.18764
+Multithread blocking,100000,10.3672
+Multithread atomic,100000,1.60355
+Single thread,1000000,17.7601
+Multithread non blocking,1000000,5.81712
+Multithread blocking,1000000,86.3209
+Multithread atomic,1000000,7.77426
+Single thread,100000000,1555.11
+Multithread non blocking,100000000,384.355
+Multithread blocking,100000000,8257.66
+Multithread atomic,100000000,726.476
+Single thread,200000000,3119.39
+Multithread non blocking,200000000,769.173
+Multithread blocking,200000000,16699.8
+Multithread atomic,200000000,1420.54
+Single thread,300000000,4554.48
+Multithread non blocking,300000000,1333
+Multithread blocking,300000000,24883
+Multithread atomic,300000000,2130.96
