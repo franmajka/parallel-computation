@@ -1,7 +1,6 @@
 import { createConnection } from 'node:net';
-import { RequestMethod, Status } from './enums';
+import { Status } from './enums';
 import { handlersMap } from './handlers';
-import { generateRandomMatrix, randomInRange } from './helpers';
 
 const socket = createConnection({ port: 8080 }, () => {
   console.log('Client connected to server!');
